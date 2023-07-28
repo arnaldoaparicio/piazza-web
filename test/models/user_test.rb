@@ -14,14 +14,14 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "requires a valid email" do
-    @user = User.new("John", email: "")
+    @user = User.new(name: "John", email: "")
     assert_not @user.valid?
 
     @user.email = "invalid"
     assert_not @user.valid?
 
-    @user.email = "johnoe@example.com"
-    assert @user.valid
+    @user.email = "johndoe@example.com"
+    assert @user.valid?
   end
 
   test "requires a unique email" do
