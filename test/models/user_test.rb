@@ -6,7 +6,7 @@ class UserTest < ActiveSupport::TestCase
   # end
 
   test "requires a name" do
-    @user = User.new(name: "", email: "johndoe@example.com")
+    @user = User.new(name: "", email: "johndoe@example.com", password: 'password')
     assert_not @user.valid?
 
     @user.name = "John"
@@ -14,7 +14,7 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "requires a valid email" do
-    @user = User.new(name: "John", email: "")
+    @user = User.new(name: "John", email: "", password: 'password')
     assert_not @user.valid?
 
     @user.email = "invalid"
@@ -25,10 +25,10 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "requires a unique email" do
-    @existing_user = User.create(name: "John", email: "jd@example.com")
+    @existing_user = User.create(name: "John", email: "jd@example.com", password: 'password')
     assert @existing_user.persisted?
 
-    @user = User.new(name: "Jon", email: "jd@example.com")
+    @user = User.new(name: "Jon", email: "jd@example.com", password: 'password')
     assert_not @user.valid?
   end
 
