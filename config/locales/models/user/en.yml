@@ -6,4 +6,5 @@ en:
           attributes:
             password:
               too_short: must be at least 8 characters long
-              password_confirmation: passwords do not match
+            password_confirmation:
+              confirmation: passwords do not match
