@@ -9,7 +9,7 @@ kramer:
   email: kramer@example.com
   password_digest: <%= BCrypt::Password.create("password") %>
 
-elaine
+elaine:
   name: Elane
   email: elaine@example.com
   password_digest: <%= BCrypt::Password.create("password") %>
