@@ -5,4 +5,4 @@ en:
       submit: Login
     create:
       success: You're logged in!
-      incorrect_details: The email or passwordwas incorrect. Please try again.
+      incorrect_details: The email or password was incorrect. Please try again.
