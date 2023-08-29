@@ -81,7 +81,7 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "can authenticate with a valid session id and token" do
-    @users = users(:jerry)
+    @user = users(:jerry)
 
     @app_session = @user.app_sessions.create
 
@@ -92,6 +92,6 @@ class UserTest < ActiveSupport::TestCase
   test "trying to authenticate with a token that doesn't exist returns false" do
     @user = users(:jerry)
 
-    assert_not user.authenticate_app_session(50, "token")
+    assert_not @user.authenticate_app_session(50, "token")
   end
 end
