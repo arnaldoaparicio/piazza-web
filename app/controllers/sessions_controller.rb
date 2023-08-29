@@ -10,6 +10,8 @@ class SessionsController < ApplicationController
     )
 
     if @app_session
+      log_in(@app_session)
+      
       flash[:session] = t(".success")
       redirect_to root_path, status: :see_other
     else
