@@ -37,7 +37,7 @@ class AuthenticateTest< ActionDispatch::IntegrationTest
   test "unathenticated request renders login page" do
     get edit_authenticate_test_path
 
-    assert_response :unathorized
+    assert_response :unauthorized
     assert_equal I18n.t("login_required"), flash[:notice]
     assert_select "form[action='#{login_path}']"
   end
@@ -45,9 +45,9 @@ class AuthenticateTest< ActionDispatch::IntegrationTest
   test "authentication is skipped for actions marked to do so" do
     get new_authenticate_test_path
     assert_response :ok
-    asert_match /authenticate_tests#new/, response.body
+    assert_match /authenticate_tests#new/, response.body
 
-    post new_authenticate_test_path
+    post authenticate_test_path
     assert_response :ok
     assert_match /authenticate_tests#create/, response.body
   end
@@ -65,7 +65,7 @@ class AuthenticateTest< ActionDispatch::IntegrationTest
 
   private
 
-    def login(user, password: 'password')
+    def log_in(user, password: 'password')
       post login_path, params: {
         user: {
           email: user.email,
